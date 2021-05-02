@@ -11,3 +11,12 @@ body{
   /* This centers our sketch vertically. */
   align-items: center;
 }
+#ending{
+  position:absolute;
+  font-size: 100px;
+  font-weight: bolder;
+  z-index: 1;
+  color:white;
+  text-shadow: 4px 4px black;
+}
+
