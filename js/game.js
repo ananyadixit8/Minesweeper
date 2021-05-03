@@ -13,11 +13,19 @@ var w = 20;
 var rows = Math.floor(300 / w);
 var cols = Math.floor(300 / w);
 var totalMines = 30;
+var revealedCount = 0;
+var flagCount = 30;
 
 
 
 function setup() {
     createCanvas(300, 300);
+
+    //disable default right click on canvas
+    var canvas = document.getElementsByTagName("canvas");
+    canvas[0].addEventListener('contextmenu', event => event.preventDefault());
+
+
 
     grid = makeGrid(rows, cols);
     for (var i = 0; i < rows; i++) {
@@ -52,10 +60,11 @@ function setup() {
 }
 
 function dfs(i, j) {
-    if (grid[i][j].revealed == true || grid[i][j].mine == true) {
+    if (grid[i][j].revealed == true || grid[i][j].mine == true || grid[i][j].flag == true) {
         return;
     }
     grid[i][j].reveal();
+    revealedCount++;
     if (grid[i][j].mineCount == 0) {
         for (var h = -1; h <= 1; h++) {
             for (var v = -1; v <= 1; v++) {
@@ -81,32 +90,75 @@ function gameOver() {
             if (grid[i][j].mine == true) {
                 grid[i][j].revealed = true;
             }
+            grid[i][j].flag = false;
         }
     }
     var div = document.getElementById("ending");
     div.innerHTML = "GAME OVER!";
+    var button = document.getElementById("playAgain");
+    button.style.display = "block";
+
     return;
 
 
 }
 
-
-function mousePressed() {
+function gameWon() {
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
-            if (grid[i][j].contains(mouseX, mouseY)) {
-                if (grid[i][j].mineCount == 0) {
+            if (grid[i][j].mine == true) {
+                grid[i][j].revealed = true;
+            }
+            grid[i][j].flag = false;
+        }
+    }
 
-                    dfs(i, j);
-                }
-                grid[i][j].reveal();
-                if (grid[i][j].mine == true) {
-                    gameOver();
+    var div = document.getElementById("ending");
+    div.innerHTML = "YOU WON!";
+    var button = document.getElementById("playAgain");
+    button.style.display = "block";
+    return;
+}
+
+
+function mousePressed() {
+
+
+    if (mouseButton === LEFT) {
+        for (var i = 0; i < rows; i++) {
+            for (var j = 0; j < cols; j++) {
+                if (grid[i][j].contains(mouseX, mouseY)) {
+                    if (grid[i][j].mineCount == 0) {
+
+                        dfs(i, j);
+                    }
+                    else {
+                        grid[i][j].reveal();
+                        revealedCount++;
+                    }
+                    if (grid[i][j].mine == true) {
+                        gameOver();
+                    }
+                    if (revealedCount == rows * cols - totalMines) {
+                        gameWon();
+                    }
                 }
             }
         }
     }
+    else if (mouseButton === RIGHT) {
+        for (var i = 0; i < rows; i++) {
+            for (var j = 0; j < cols; j++) {
+                if (grid[i][j].contains(mouseX, mouseY)) {
+                    grid[i][j].flagToggle();
+                }
+            }
+        }
+    }
+
 }
+
+
 
 function draw() {
     clear();

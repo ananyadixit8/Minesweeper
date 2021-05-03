@@ -12,7 +12,8 @@ body{
   align-items: center;
 }
 #ending{
-  position:absolute;
+  position:fixed;
+  top:10px;
   font-size: 100px;
   font-weight: bolder;
   z-index: 1;
@@ -20,3 +21,18 @@ body{
   text-shadow: 4px 4px black;
 }
 
+#playAgain {
+  position:fixed;
+  bottom:50px;
+  display : none;
+}
+
+#flagExceeded {
+  position : fixed;
+  bottom: 0px;
+  display: none;
+  font-size: 35px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 2px 2px white;
+}

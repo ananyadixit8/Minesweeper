@@ -5,8 +5,9 @@ function Cell(i, j, w) {
     this.x = i * w;
     this.y = j * w;
     this.mineCount = 0;
-    this.mine=false;
+    this.mine = false;
     this.revealed = false;
+    this.flag = false;
 }
 
 Cell.prototype.show = function () {
@@ -25,21 +26,31 @@ Cell.prototype.show = function () {
             strokeWeight(2);
             fill(200);
             rect(this.x, this.y, this.w, this.w);
-            if(this.mineCount>0){
+            if (this.mineCount > 0) {
                 textAlign(CENTER);
                 fill(0);
                 strokeWeight(1);
-                text(this.mineCount, this.x + 0.5 * this.w, this.y + this.w -5);
+                text(this.mineCount, this.x + 0.5 * this.w, this.y + this.w - 5);
             }
 
         }
+    }
+    if (this.revealed==false && this.flag) {
+        stroke(0);
+        strokeWeight(2);
+        fill(0);
+        rect(this.x, this.y, this.w, this.w);
+        textAlign(CENTER);
+        fill(255);
+        strokeWeight(1);
+        text('F', this.x + 0.5 * this.w, this.y + this.w - 5);
     }
 }
 
 Cell.prototype.countMines = function () {
     if (this.mine) {
-        this.mineCount= -1;
-        return ;
+        this.mineCount = -1;
+        return;
     }
     var mines = 0;
     for (var i = -1; i <= 1; i++) {
@@ -61,4 +72,25 @@ Cell.prototype.contains = function (x, y) {
 
 Cell.prototype.reveal = function () {
     this.revealed = true;
+}
+
+Cell.prototype.flagToggle = function () {
+
+
+    if (this.flag == true) {
+        flagCount++;
+        this.flag = false;
+        var div = document.getElementById("flagExceeded");
+        div.style.display = "none";
+    }
+    else if(flagCount>0){
+        flagCount--;
+        this.flag = true;
+        var div = document.getElementById("flagExceeded");
+        div.style.display = "none";
+    }
+    else if(flagCount==0){
+        var div = document.getElementById("flagExceeded");
+        div.style.display = "block";
+    }
 }
