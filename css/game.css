@@ -13,7 +13,7 @@ body{
 }
 #ending{
   position: fixed;
-  top: 10 px;
+  top: 10px;
   font-size: 100px;
   font-weight: bolder;
   z-index: 1;
