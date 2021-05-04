@@ -18,8 +18,7 @@ Cell.prototype.show = function () {
     rect(this.x, this.y, this.w, this.w);
     if (this.revealed) {
         if (this.mine) {
-            fill(0);
-            ellipse(this.x + this.w * 0.5, this.y + this.w * 0.5, this.w * 0.5);
+            image(bomb, this.x , this.y ,20,20);
         }
         else {
             stroke(0);
@@ -35,15 +34,12 @@ Cell.prototype.show = function () {
 
         }
     }
-    if (this.revealed==false && this.flag) {
+    if (this.revealed == false && this.flag) {
         stroke(0);
         strokeWeight(2);
-        fill(0);
+        noFill();
         rect(this.x, this.y, this.w, this.w);
-        textAlign(CENTER);
-        fill(255);
-        strokeWeight(1);
-        text('F', this.x + 0.5 * this.w, this.y + this.w - 5);
+        image(flag, this.x , this.y ,20,20);
     }
 }
 
@@ -83,13 +79,13 @@ Cell.prototype.flagToggle = function () {
         var div = document.getElementById("flagExceeded");
         div.style.display = "none";
     }
-    else if(flagCount>0){
+    else if (flagCount > 0) {
         flagCount--;
         this.flag = true;
         var div = document.getElementById("flagExceeded");
         div.style.display = "none";
     }
-    else if(flagCount==0){
+    else if (flagCount == 0) {
         var div = document.getElementById("flagExceeded");
         div.style.display = "block";
     }

@@ -15,11 +15,21 @@ var cols = Math.floor(300 / w);
 var totalMines = 30;
 var revealedCount = 0;
 var flagCount = 30;
+let bomb;
+let flag;
 
+
+
+function preload() {
+    // bomb = loadImage("images/bomb.png");
+    // flag= loadImage("images/flag.png");
+
+}
 
 
 function setup() {
-    createCanvas(300, 300);
+
+    createCanvas(300,300);
 
     //disable default right click on canvas
     var canvas = document.getElementsByTagName("canvas");
