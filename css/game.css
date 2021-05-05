@@ -11,6 +11,9 @@ body{
   /* This centers our sketch vertically. */
   align-items: center;
 }
+
+
+
 #ending{
   position: fixed;
   top: 10px;
@@ -21,22 +24,10 @@ body{
   text-shadow: 4px 4px black;
 }
 
-#difficulty{
-  position: fixed;
-  top: 70px;
-  width: 200px;
-}
-
-#playButton{
-  position: fixed;
-  top: 70px;
-  left: 720px;
-  
-}
-
 #playAgain {
   position:fixed;
-  bottom:50px;
+  left : 60px;
+  bottom : 225px;
   display : none;
 }
 

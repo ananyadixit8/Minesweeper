@@ -9,32 +9,53 @@ function makeGrid(rows, cols) {
 
 var grid;
 var w = 20;
+var length = 300;
+var width = 300;
 var rows = Math.floor(300 / w);
 var cols = Math.floor(300 / w);
 var totalMines = 30;
 var revealedCount = 0;
 var flagCount = 30;
+var cnv;
 let bomb;
 let flag;
 
 
 
 function preload() {
-    // bomb = loadImage("images/bomb.png");
-    // flag= loadImage("images/flag.png");
+     bomb = loadImage("images/bomb.png");
+     flag= loadImage("images/flag.png");
 
 }
 
+function setDimensions() {
+    length = 300;
+    width = 300;
+    var form = document.querySelector('select');
+    var difficulty = form.value;
+    if (difficulty == 1) {
+        rows = 14;
+        cols = 9;
+        length = rows * w;
+        width = cols * w;
+        totalMines = 15;
+        flagCount = 15;
+    }
+    else if (difficulty == 3) {
+        rows = 22;
+        cols = 22;
+        length = rows * w;
+        width = cols * w;
+        totalMines = 80;
+        flagCount = 80;
+    }
+    else {
 
-function setup() {
-
-    createCanvas(300,300);
-
-    //disable default right click on canvas
-    var canvas = document.getElementsByTagName("canvas");
-    canvas[0].addEventListener('contextmenu', event => event.preventDefault());
-
-
+        rows = Math.floor(300 / w);
+        cols = Math.floor(300 / w);
+        totalMines = 30;
+        flagCount = 30;
+    }
 
     grid = makeGrid(rows, cols);
     for (var i = 0; i < rows; i++) {
@@ -66,6 +87,27 @@ function setup() {
 
         }
     }
+
+    resizeCanvas(length, width);
+    if(difficulty==3){
+        cnv.position(400,100);
+    }
+
+}
+
+
+
+function setup() {
+
+    cnv=createCanvas(length, width);
+
+    //disable default right click on canvas
+    var canvas = document.getElementsByTagName("canvas");
+    canvas[0].addEventListener('contextmenu', event => event.preventDefault());
+
+    setDimensions();
+
+
 }
 
 function dfs(i, j) {

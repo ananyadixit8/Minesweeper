@@ -47,10 +47,16 @@
               
             </div>
         </nav>
-        
+        <select id="difficuly" class="form-select" style="position : fixed ;width :200px; left:5px;">
+            <option selected>Choose Difficulty</option>
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+        </select>
+        <button  id="playButton" class="btn btn-light btn-group-sm" style="position:fixed; left:205px;" onclick="setDimensions()">Play</button>
         <div id="ending"></div>
         <br><br><br><br><br><br>
-        <a class="btn btn-light btn-lg" id="playAgain" href="game.html">Play Again!</a>
+        <a class="btn btn-light btn-group-sm" id="playAgain" href="game.html">Play Again!</a>
         <div id="flagExceeded">No more flags left. Try removing some flags.</div>
 
 
