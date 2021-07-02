@@ -1,42 +1,63 @@
-html,body{
-    height: 100%;
-}
 body{
-  margin: 0;
-  display: flex;
-
-  /* This centers our sketch horizontally. */
-  justify-content: center;
-
-  /* This centers our sketch vertically. */
-  align-items: center;
+  height: 1000px;
 }
-
-
-
+#canvasContainer{
+  position : absolute;
+  top:30%;
+  left:35%;
+  justify-content: center;
+  align-content: center;
+}
 #ending{
   position: fixed;
-  top: 10px;
+  left:33%;
   font-size: 100px;
   font-weight: bolder;
   z-index: 1;
   color:white;
   text-shadow: 4px 4px black;
 }
+#userOptions{
+  position:fixed;
+  top: 30%;
+  justify-content: center;
+}
+
+#userTime{
+  font-size:50px;
+  font-weight:bold;
+}
 
 #playAgain {
-  position:fixed;
-  left : 60px;
-  bottom : 225px;
+  position : fixed;
+  top: 67%;
   display : none;
+  
+}
+
+#userName{
+  position: fixed;
+  top:60%;
+  visibility: hidden;
 }
 
 #flagExceeded {
   position : fixed;
-  bottom: 0px;
+  bottom: 0%;
+  left:30%;
   display: none;
   font-size: 35px;
   font-weight: bold;
   color: black;
   text-shadow: 2px 2px white;
 }
+
+.left {
+  left : 0%;
+}
+
+.center{
+  left : 40%;
+}
+
+

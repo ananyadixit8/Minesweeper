@@ -1,6 +1,5 @@
 body {
-    background-image: url(https://images.unsplash.com/photo-1515895309288-a3815ab7cf81?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGdyZXl8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60);
-    background-repeat: no-repeat;
+    background: url(https://images.unsplash.com/photo-1515895309288-a3815ab7cf81?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGdyZXl8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60) no-repeat center center fixed;
     background-size: cover;
 	font-family: Antonio;
 	font-size: 25px;
