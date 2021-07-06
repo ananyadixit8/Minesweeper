@@ -16,10 +16,6 @@ window.onscroll = function () {
 };
 
 
-var min_inf = Number.MIN_SAFE_INTEGER;
-
-
-const leader_table = [min_inf,min_inf,min_inf,min_inf,min_inf,min_inf,min_inf,min_inf,min_inf,min_inf];
 
 
 
