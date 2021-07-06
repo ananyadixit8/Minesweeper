@@ -1,16 +1,17 @@
 body{
+  width: 700px;
   height: 1000px;
 }
 #canvasContainer{
   position : absolute;
   top:30%;
-  left:35%;
+  left:36%;
   justify-content: center;
   align-content: center;
 }
 #ending{
-  position: fixed;
-  left:33%;
+  position: absolute;
+  left:31%;
   font-size: 100px;
   font-weight: bolder;
   z-index: 1;
@@ -18,42 +19,43 @@ body{
   text-shadow: 4px 4px black;
 }
 #userOptions{
-  position:fixed;
+  position: absolute;
+  display: flex;
   top: 30%;
-  justify-content: center;
+  column-gap: 20px;
+  justify-content: space-evenly;
 }
 
 #userTime{
+  position : absolute;
   font-size:50px;
   font-weight:bold;
+  left:80%;
+  top :35%;
 }
 
 #playAgain {
-  position : fixed;
-  top: 67%;
+  position : absolute;
+  top: 40%;
+  left: 4%;
   display : none;
   
 }
 
 #userName{
-  position: fixed;
+  position: absolute;
   top:60%;
   visibility: hidden;
 }
 
 #flagExceeded {
   position : fixed;
-  bottom: 0%;
-  left:30%;
+  left:26%;
   display: none;
   font-size: 35px;
   font-weight: bold;
   color: black;
   text-shadow: 2px 2px white;
-}
-
-.left {
-  left : 0%;
 }
 
 .center{

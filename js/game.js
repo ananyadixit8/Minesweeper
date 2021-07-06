@@ -1,3 +1,6 @@
+
+//function that initializes an array of specified number of rows and columns 
+
 function makeGrid(rows, cols) {
     var arr = new Array(rows);
     for (var i = 0; i < rows; i++) {
@@ -6,6 +9,7 @@ function makeGrid(rows, cols) {
     return arr;
 }
 
+//variables to keep track of all elements in the game
 
 var grid;
 var w = 20;
@@ -24,12 +28,15 @@ var gameStart;
 var time;
 var gameFinish;
 
+//function that preloads the mine and flag images 
 
 function preload() {
     bomb = loadImage("images/bomb.png");
     flag = loadImage("images/flag.png");
 
 }
+
+//function resets all html elements to their original state
 
 function resetGame(){
 
@@ -47,23 +54,30 @@ function resetGame(){
 
 }
 
+//function to move the difficulty options to the left side when game starts
+
 function moveOptionsToSide(){
     var userOptions = document.getElementById("userOptions");
     userOptions.classList.remove("center");
 }
 
+//function used to set the dimensions of the grid according to difficulty
 function setDimensions() {
 
     //reset all elements 
     resetGame();
 
-
     length = 300;
     width = 300;
+
+    //get the difficulty value from the options
     var form = document.querySelector('select');
     difficulty = form.value;
    
+    //for easy difficulty
     if (difficulty == 1) {
+
+        //initialize the grid variables
         rows = 14;
         cols = 9;
         length = rows * w;
@@ -73,11 +87,24 @@ function setDimensions() {
         revealedCount = 0;
         gameStart = new Date();
         gameFinish = false;
+
+        //move difficulty options to the left
         moveOptionsToSide();
+
+        //re-align canvas  
+        var canvasContainer = document.getElementById("canvasContainer");
+        canvasContainer.style.left = "36%";
+
+        //re-align the timer
+        var userTime = document.getElementById("userTime");
+        userTime.style.top = "35%";
+        userTime.style.left = "75%";
         
     }
+    //for medium difficulty
     else if(difficulty == 2){
 
+        //initialize the grid variables
         rows = Math.floor(300 / w);
         cols = Math.floor(300 / w);
         totalMines = 30;
@@ -85,9 +112,24 @@ function setDimensions() {
         revealedCount = 0;
         gameStart = new Date();
         gameFinish = false;
+
+        //move difficulty options to the left
         moveOptionsToSide();
+
+        //re-align canvas  
+        var canvasContainer = document.getElementById("canvasContainer");
+        canvasContainer.style.left = "36%";
+
+        //re-align the timer
+        var userTime = document.getElementById("userTime");
+        userTime.style.top = "45%";
+        userTime.style.left = "76%";
+
     }
+    //for hard difficulty
     else if (difficulty == 3) {
+
+        //initialize the grid variables
         rows = 22;
         cols = 22;
         length = rows * w;
@@ -97,9 +139,24 @@ function setDimensions() {
         revealedCount = 0;
         gameStart = new Date();
         gameFinish = false;
+
+        //move difficulty options to the left
         moveOptionsToSide();
+
+        //re-align canvas  
+        var canvasContainer = document.getElementById("canvasContainer");
+        canvasContainer.style.left = "30%";
+
+        //re-align the timer
+        var userTime = document.getElementById("userTime");
+        userTime.style.top = "55%";
+        userTime.style.left = "80%";
+
     }
+    //when no difficulty has been selected
     else{
+
+        //initialize the grid variables
         rows = 0;
         cols = 0;
         length = 0;
@@ -109,10 +166,13 @@ function setDimensions() {
         revealedCount = 0;
         gameStart = new Date();
         gameFinish = true;
+
     }
     
-
+    //make an array of specified size to keep track of number of mines surrounding a particular cell
     grid = makeGrid(rows, cols);
+
+    //initialize each array element as a new Cell
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
             grid[i][j] = new Cell(i, j, w);
@@ -120,7 +180,7 @@ function setDimensions() {
         }
     }
 
-    //Pick random mines 
+    //store all cell indexes in options to chose some random element as a mine
     var options = [];
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
@@ -128,6 +188,8 @@ function setDimensions() {
 
         }
     }
+
+    //choose some random cell indexes to create mines
     for (var n = 0; n < totalMines; n++) {
         var pick = floor(random(options.length));
         var i = options[pick][0];
@@ -136,6 +198,7 @@ function setDimensions() {
         grid[i][j].mine = true;
     }
 
+    //store the number of mines surrounding a particular cell in the grid
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
             grid[i][j].countMines();
@@ -143,33 +206,45 @@ function setDimensions() {
         }
     }
 
+    //resize the canvas according to specified length and width
     resizeCanvas(length, width);
     
 
 }
 
-
-
+//p5.js function to define the initial environment of the page
 function setup() {
 
+    //create the required canvas
     cnv = createCanvas(length, width);
+    //assign the canvas to the div element with id "canvasContainer" in html for alignment purposes
     cnv.parent('canvasContainer');
 
     //disable default right click on canvas
     var canvas = document.getElementsByTagName("canvas");
     canvas[0].addEventListener('contextmenu', event => event.preventDefault());
 
+    //set dimensions according to difficulty selected
     setDimensions();
 
 
 }
 
+//function to reveal all surronding cells with no mines around when a particular cell is clicked
 function dfs(i, j) {
+
+    //if this cell has been revealed or it is a mine or it has been flagged , return
     if (grid[i][j].revealed == true || grid[i][j].mine == true || grid[i][j].flag == true) {
         return;
     }
+
+    //reveral this cell
     grid[i][j].reveal();
+
+    //increase the count of revealed cells
     revealedCount++;
+
+    //if this cell has no mines around it , repeat the same for all valid neighbourhood cells
     if (grid[i][j].mineCount == 0) {
         for (var h = -1; h <= 1; h++) {
             for (var v = -1; v <= 1; v++) {
@@ -185,15 +260,17 @@ function dfs(i, j) {
             }
         }
     }
+
     return;
 }
 
-
+//when the user clicks on a mine
 function gameOver() {
     
     //make sure time isn't updated anymore
     gameFinish = true;
 
+    //reveal all mines and remove all flags
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
             if (grid[i][j].mine == true) {
@@ -202,20 +279,31 @@ function gameOver() {
             grid[i][j].flag = false;
         }
     }
+
+    //display game over message
     var div = document.getElementById("ending");
     div.innerHTML = "GAME OVER!";
+
+    //display play again button
     var button = document.getElementById("playAgain");
     button.style.display = "block";
+
+    //if difficulty is not hard, block scroll of body
+    if(difficulty!=3){
+        var body = document.getElementsByTagName("body")[0];
+        body.style.overflow = "hidden";
+    }
+    
     return;
-
-
 }
 
+//when all mines have been correctly flagged
 function gameWon() {
     
     //make sure time isn't updated anymore
     gameFinish = true;
 
+    //reveal all mines and remove all flags
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < cols; j++) {
             if (grid[i][j].mine == true) {
@@ -225,35 +313,50 @@ function gameWon() {
         }
     }
 
+    //display you won message
     var div = document.getElementById("ending");
     div.innerHTML = "YOU WON!";
+    div.style.left = "33%";
 
+    //display play again button
     var button = document.getElementById("playAgain");
     button.style.display = "block";
 
+    //diaply username form to update leaderboard if required
     var userName = document.getElementById("userName");
     userName.style.visibility = "visible";
     
-    //update the leadetboard
+    //update the leaderboard
     updateLeaderboard();
-
 
     return;
 }
 
+//display time score
 function displayTime(){
+
+    //if game has been finished, dont update time
     if(gameFinish){
         return;
     }
 
-    //display the time 
+    //calculate the time in seconds and minutes 
     var currTime = new Date();
     time = currTime - gameStart;
     time = floor(time / 1000);
     var seconds = time % 60;
     var minutes = floor(time / 60);
     var userTime = document.getElementById("userTime");
-    userTime.innerHTML = minutes + ":" + seconds;
+
+    var extraZeroMinutes = "";
+    var extraZeroSeconds = "";
+    if(floor(minutes/10)==0){
+        extraZeroMinutes = "0";
+    }
+    if(floor(seconds/10)==0){
+        extraZeroSeconds = "0";
+    }
+    userTime.innerHTML = extraZeroMinutes + minutes + ":" + extraZeroSeconds + seconds;
 
 }
 

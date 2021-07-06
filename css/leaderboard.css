@@ -1,0 +1,13 @@
+body { padding-top: 70px;
+ }
+#board{
+    overflow-y: auto;
+    height: 100px;
+}
+.board th{
+    position: sticky;
+    top: 0;
+}
+th,td{
+    text-align: center;
+}
