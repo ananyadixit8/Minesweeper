@@ -3,18 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap" rel="stylesheet">   
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="css/game.css">
         <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/leaderboard.css">
+        
 
-        <title>Play</title> 
+        <title>Leaderboard</title> 
     </head>
     <body>
 
@@ -47,47 +48,85 @@
               
             </div>
         </nav>
-        <div class="container" id="ending"></div>
-        <div id="canvasContainer"></div>
-        <div class="container ps-1 m-3 center " id="userOptions" style="width:200px;">
-            <select id="difficuly" class="form-select" style="width:200px;">
-                <option selected value="0">Choose Difficulty</option>
-                <option value="1">Easy</option>
-                <option value="2">Medium</option>
-                <option value="3">Hard</option>
-            </select>
+        <div class="table-responsive container mx-auto" >
+            <table class="table table-hover table-striped table-condensed" id="board">
 
+                <thead>
 
-            <button  id="playButton" class="btn btn-light btn-group-sm" onclick="setDimensions()">Play</button>
-        
-        
-            
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Time</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                      <th scope="row" id="1">1</th>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row" id="2">2</th>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row" id="3">3</th>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="4">4</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="5">5</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr> 
+                        <th scope="row" id="6">6</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="7">7</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="8">8</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="9">9</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="10">10</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
         </div>
-
-        <div id="userTime"></div><br><br>
         
-        <div class="input-group mb-3 m-3" id="userName" style="width:300px;">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            <button class="btn btn-outline-secondary btn-light" type="button" id="button-addon2" onclick="updateLeaderboard()">Submit</button>
-        </div>
-
-        <button class="btn btn-light btn-group btn-group-sm m-3" id="playAgain"><a href="game.html">Play Again!</a></button>
-
-        <div id="flagExceeded">No more flags left. Try removing some flags.</div>
 
 
 
-        <script src="js/home.js"></script>
+        
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.min.js"></script>
-        <script src="js/game.js"></script>
-        <script src="js/cell.js"></script>
-        <script src="js/leaderboard.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
+        <script src="js/leaderboard.js"></script>
+        
+        
     </body>
 </html>
-
-
-<!--padding in difficulty buttons , adjust game over position , adjust initial user options to the center
-, timer at the bottom
--->
