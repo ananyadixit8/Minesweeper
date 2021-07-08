@@ -264,6 +264,21 @@ function dfs(i, j) {
     return;
 }
 
+async function updateLeaderboard(){
+    const data = {time};
+    const options = {
+        method : 'POST',
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        body : JSON.stringify(data)
+
+    };
+    const response = await fetch('/api',options);
+    const json = await response.json();
+    console.log(json);
+}
+
 //when the user clicks on a mine
 function gameOver() {
     
@@ -294,6 +309,8 @@ function gameOver() {
         body.style.overflow = "hidden";
     }
     
+    updateLeaderboard();
+
     return;
 }
 
@@ -359,29 +376,6 @@ function displayTime(){
     userTime.innerHTML = extraZeroMinutes + minutes + ":" + extraZeroSeconds + seconds;
 
 }
-
-function updateLeaderboard(){
-    var user = document.querySelector('input').value;
-    var index = -1;
-    for(var i = 0;i<10;i++){
-       if(time<leader_table[i]){
-           index=i;
-           break;
-       } 
-    }
-    if(index==-1){
-        return ;
-    }
-
-    for(var i=index+1;i<10;i++){
-        leader_table[i]=leader_table[i-1];
-    }
-    leader_table[index]=time;
-    return ;
-
-    
-}
-
 
 function mousePressed() {
 
