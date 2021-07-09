@@ -15,6 +15,27 @@ window.onscroll = function () {
     }
 };
 
+async function easyUpdate(){
+
+    const response = await fetch('/easyapi');
+    const data = await response.json();
+    console.log(data);
+}
+
+async function mediumUpdate(){
+
+    const response = await fetch('/mediumapi');
+    const data = await response.json();
+    console.log(data);
+}
+
+async function hardUpdate(){
+
+    const response = await fetch('/hardapi');
+    const data = await response.json();
+    console.log(data);
+}
+
 
 
 

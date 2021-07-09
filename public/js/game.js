@@ -27,6 +27,7 @@ var difficulty = 0;
 var gameStart;
 var time;
 var gameFinish;
+var userName = 'Anonymous';
 
 //function that preloads the mine and flag images 
 
@@ -82,8 +83,8 @@ function setDimensions() {
         cols = 9;
         length = rows * w;
         width = cols * w;
-        totalMines = 9;
-        flagCount = 9;
+        totalMines = 1;
+        flagCount = 1;
         revealedCount = 0;
         gameStart = new Date();
         gameFinish = false;
@@ -264,8 +265,13 @@ function dfs(i, j) {
     return;
 }
 
+function setUsername(){
+
+    userName = document.getElementById('userName').value;
+
+}
 async function updateLeaderboard(){
-    const data = {time};
+    const data = {time , difficulty, userName};
     const options = {
         method : 'POST',
         headers : {
@@ -277,6 +283,16 @@ async function updateLeaderboard(){
     const response = await fetch('/api',options);
     const json = await response.json();
     console.log(json);
+
+    if(difficulty==1){
+        easyUpdate();
+    }
+    else if(difficulty==2){
+        mediumUpdate();
+    }
+    else if(difficulty==3){
+        hardUpdate();
+    }
 }
 
 //when the user clicks on a mine
@@ -304,13 +320,11 @@ function gameOver() {
     button.style.display = "block";
 
     //if difficulty is not hard, block scroll of body
-    if(difficulty!=3){
+    if(difficulty!==3){
         var body = document.getElementsByTagName("body")[0];
         body.style.overflow = "hidden";
     }
     
-    updateLeaderboard();
-
     return;
 }
 
