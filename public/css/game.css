@@ -42,7 +42,7 @@ body{
   
 }
 
-#userName{
+#userNameDiv{
   position: absolute;
   top:60%;
   visibility: hidden;

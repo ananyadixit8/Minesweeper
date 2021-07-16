@@ -19,13 +19,14 @@ app.use(express.json());
 
 app.get('/easyapi', (request, response) => {
 
-    easyBoard.find({}, (err,data) => {
+    easyBoard.find({}).sort({time : 1}).exec((err, data) => {
         if(err){
             console.log(err);
             response.end();
             return ;
         }
         response.json(data);
+
     });
 
 });
@@ -71,12 +72,7 @@ app.post('/api' , (request, response) => {
 
 
     if(difficulty==1){
-        easyBoard.insert(data);
-        easyBoard.find({}).sort({time : 1}).exec((err, docs) => {
-            if(err){
-                console.log(err);
-            }
-        });
+        easyBoard.insert(data)
     }
     else if(difficulty==2){
         mediumBoard.insert(data);

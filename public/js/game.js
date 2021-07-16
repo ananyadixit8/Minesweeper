@@ -50,8 +50,8 @@ function resetGame(){
     var userTime = document.getElementById("userTime");
     userTime.innerHTML = "";
 
-    var userName = document.getElementById("userName");
-    userName.style.visibility = "hidden";
+    var userNameDiv = document.getElementById("userNameDiv");
+    userNameDiv.style.visibility = "hidden";
 
 }
 
@@ -268,9 +268,12 @@ function dfs(i, j) {
 function setUsername(){
 
     userName = document.getElementById('userName').value;
+    console.log(userName);
 
 }
+
 async function updateLeaderboard(){
+    console.log("update");
     const data = {time , difficulty, userName};
     const options = {
         method : 'POST',
@@ -284,15 +287,6 @@ async function updateLeaderboard(){
     const json = await response.json();
     console.log(json);
 
-    if(difficulty==1){
-        easyUpdate();
-    }
-    else if(difficulty==2){
-        mediumUpdate();
-    }
-    else if(difficulty==3){
-        hardUpdate();
-    }
 }
 
 //when the user clicks on a mine
@@ -354,11 +348,11 @@ function gameWon() {
     button.style.display = "block";
 
     //diaply username form to update leaderboard if required
-    var userName = document.getElementById("userName");
+    var userName = document.getElementById("userNameDiv");
     userName.style.visibility = "visible";
     
     //update the leaderboard
-    updateLeaderboard();
+    setTimeout(updateLeaderboard,60000);
 
     return;
 }
