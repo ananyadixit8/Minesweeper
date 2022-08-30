@@ -23,10 +23,10 @@
         
               
                 
-        <nav class=" shadow navbar navbar-expand-lg navbar-light fixed-top navbar_background px-3 align-items-center " id="scroll" >
+        <nav class=" shadow navbar navbar-expand-lg navbar-light fixed-top navbar_background px-3 " id="scroll" >
             <div class="container-fluid">
             <a class="navbar-brand " href="index.html#top" style="font-size: 25px;"><i class="fas fa-bomb"></i>  Minesweeper</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="d-flex flex-row-reverse bd-highlight">
@@ -41,9 +41,6 @@
                     <li class="nav-item ">
                         <a class="nav-link active" href="index.html#leaderboard">Leaderboard</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link active" href="index.html#contact">Contact Us</a>
-                    </li>
                 </ul>
                
               </div>
@@ -55,50 +52,49 @@
 
 
           <div class="container jumbotron mx-auto" >
-              <div class="maintext my-5 pt-5"><i class="fas fa-bomb"></i>  MINESWEEPER</div>
-              <div class="d-flex justify-content-center">
-              <a class="btn btn-light btn-lg" href="game.html">Play Now!</a>
-              </div>
+              <div class="maintext my-5 pt-5"><i class="fas fa-bomb"></i>  MINESWEEPER </div>
+              
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-light btn-lg" href="game.html">Play Now!</a>
           </div>
           <br><br>
 
           <h1 class="heading" id="about">ABOUT</h1>
           <br>
           <div class="d-flex justify-content-center mx-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet efficitur est. Sed id nisi nibh. Donec urna elit, varius eu tempor ac, laoreet at nisi. Sed pharetra eu lorem sed aliquam. Praesent vehicula, quam at ornare venenatis, tellus sapien vulputate lacus, non fringilla massa urna ut dui. Nam sem orci, lobortis et nulla nec, lacinia efficitur velit. Praesent id nulla eget libero venenatis posuere. Duis bibendum placerat finibus. Praesent in ullamcorper ex, nec vulputate metus. Mauris nec leo eu erat ullamcorper ornare. Nullam posuere felis ipsum
+            Minesweeper is a single player game where you have to open all cells of the game grid, without opening mines. Each cell shows the number of mines it is surrounded by on the eight sides. The game has three modes: easy, medium and hard which differ in the size of the grid and number of mines. To know more, check the How To Play section. Click on the Play Now button to start playing, complete in minimum time to get featured on the leaderboard!
           </div>
           <br><br>
 
           <h1 class="heading" id="howto">HOW TO PLAY</h1>
           <br>
           <div class="d-flex justify-content-center mx-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet efficitur est. Sed id nisi nibh. Donec urna elit, varius eu tempor ac, laoreet at nisi. Sed pharetra eu lorem sed aliquam. Praesent vehicula, quam at ornare venenatis, tellus sapien vulputate lacus, non fringilla massa urna ut dui. Nam sem orci, lobortis et nulla nec, lacinia efficitur velit. Praesent id nulla eget libero venenatis posuere. Duis bibendum placerat finibus. Praesent in ullamcorper ex, nec vulputate metus. Mauris nec leo eu erat ullamcorper ornare. Nullam posuere felis ipsum
+            Minesweeper involves a grid of cells. Initially all cells are balnk. You can click on a cell to reveal its contents. A cell can either be a mine or it will contain a number which denotes the number of mines which surrond this cell on the 8 sides. In case you click on a mine, you loose the game. You can add a flag on the cells you suspect are mines by right clicking on the cell. There the same number of flags available as the number of mines in the grid. When all the mines are correctly flagged and all other cells opened, you win the game. The time taken to solve a grid becomes your score, which is used to determine your rank on the leaderboard. 
           </div>
           <br><br>
 
           <h1 class="heading" id="leaderboard">LEADERBOARD</h1>
           <br>
           <div class="container">
-            <div class="row center">
+            <div class="row center justify-content-center">
               <div class="col-lg-4 mb-2">
-                   <div class="box leaders pt-4">
-                     <h3>FIRST</h3>
-                     <h4 id="firstname">None</h4>
-                     Score: <div id="firstscore"></div>
+                   <div class="box leaders pt-4 ">
+                     <h2>Easy</h2> 
+                     <h2 id="firstname">None</h2>
                    </div>
               </div>
               <div class="col-lg-4 mb-2">
-                   <div class="col-lg-4 box leaders pt-4">
-                    <h3>SECOND</h3>
-                    <h4 id="secondname">None</h4>
-                    Score: <div id="secondscore"></div>
+                   <div class="box leaders pt-4">
+                    <h2>Medium</h2>
+                    <h2 id="secondname">None</h2>
                   </div>
               </div>  
               <div class="col-lg-4 mb-2">
-                  <div class="col-lg-4 box leaders pt-4">
-                    <h3>THIRD</h3>
-                    <h4 id="thirdname">None</h4>
-                    Score: <div id="thirdscore"></div>
+                  <div class="box leaders pt-4">
+                    <h2>Hard</h2>
+                    <h2 id="thirdname">None</h2>
                   </div>
               </div>     
             </div>
@@ -108,22 +104,11 @@
           <div class="container heading ">
             <a class=" btn btn-light opaque mx-auto center shadow big" href="leaderboard.html"> View More </a>
           </div>
-          
+
           <br><br>
-          <h1 class="heading" id="conatct">CONTACT US</h1>
-               
-     
-                  
-      
-
-              
-
-         
-
-
 
          <script src="js/home.js"></script>
-         
+
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
     </body>

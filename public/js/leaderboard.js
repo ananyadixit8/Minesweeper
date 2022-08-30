@@ -25,6 +25,7 @@ function updateContent(){
 }
 
 async function easyUpdate(){
+
     const response = await fetch('/easyapi');
     const data = await response.json();
     console.log(data);
@@ -32,6 +33,10 @@ async function easyUpdate(){
     //update in the html page
 
     for(var i=0;i<5;i++){
+
+        if(typeof data[i] === 'undefined'){
+            break;
+        }
 
         var elementId = "e";
         var j = i+1;
@@ -65,6 +70,10 @@ async function mediumUpdate(){
    
     for(var i=0;i<5;i++){
 
+        if(typeof data[i] === 'undefined'){
+            break;
+        }
+
         var elementId = "m";
         var j = i+1;
         elementId +=  j.toString();
@@ -95,6 +104,10 @@ async function hardUpdate(){
 
     for(var i=0;i<5;i++){
 
+        if(typeof data[i] === 'undefined'){
+            break;
+        }
+        
         var elementId = "h";
         var j = i+1;
         elementId +=  j.toString();
